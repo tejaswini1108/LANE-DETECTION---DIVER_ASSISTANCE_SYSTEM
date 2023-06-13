@@ -1,0 +1,21 @@
+
+!pip install moviepy
+from moviepy.editor import VideoFileClip
+import cv2
+from moviepy.editor import *
+import numpy as np
+white_output = './solidWhiteRight.mp4'
+clip1 = VideoFileClip("test_videos/solidWhiteRight.mp4")
+white_clip = clip1.fl_image(lane_finding_pipeline) #NOTE: this function expects color images!!
+%time white_clip.write_videofile(white_output, audio=False)
+video = VideoFileClip("/content/solidWhiteRight.mp4")
+video = video.fx( vfx.speedx, 1)
+video.ipython_display()
+#video 2
+yellow_output = './solidYellowLeft.mp4'
+clip2 = VideoFileClip('test_videos/solidYellowLeft.mp4')
+yellow_clip = clip2.fl_image(lane_finding_pipeline)
+%time yellow_clip.write_videofile(yellow_output, audio=False)
+video = VideoFileClip("/content/solidYellowLeft.mp4")
+video = video.fx( vfx.speedx, 1)
+video.ipython_display()
