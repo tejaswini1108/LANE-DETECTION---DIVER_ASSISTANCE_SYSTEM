@@ -1,0 +1,24 @@
+
+import os
+for image_path in list(os.listdir('./test_images')):
+    fig = plt.figure(figsize=(20, 10))
+    image = mpimg.imread(f'./test_images/{image_path}')
+    ax = fig.add_subplot(1, 2, 1,xticks=[], yticks=[])
+    plt.imshow(image)
+    ax.set_title("Input Image")
+    ax = fig.add_subplot(1, 2, 2,xticks=[], yticks=[])
+    plt.imshow(lane_finding_pipeline(image))
+    ax.set_title("Output Image [Lane Line Detected]")
+    plt.show()
+
+fig = plt.figure(figsize=(20, 10))
+image = mpimg.imread('/content/test_images/whiteCarLaneSwitch.jpg')
+image = cv2.cvtColor(image, cv2.COLOR_BGRA2RGB)
+image = image.astype(np.uint8)
+ax = fig.add_subplot(1, 2, 1,xticks=[], yticks=[])
+plt.imshow(image)
+ax.set_title("Input Image")
+ax = fig.add_subplot(1, 2, 2,xticks=[], yticks=[])
+plt.imshow(lane_finding_pipeline(image))
+ax.set_title("Output Image [Lane Line Detected]")
+plt.show()
